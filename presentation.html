@@ -114,6 +114,31 @@
         float: right;
         padding-top: 1em;
       }
+
+    .grid-conversion {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    .grid-conversion table {
+      border-collapse: collapse;
+      background-color: black;
+      color: white;
+    }
+    
+    .grid-conversion td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid white;
+      text-align: center;
+    }
+    
+    .grid-conversion.arrow {
+      color: black;
+      font-size: 2rem;
+    }
     </style>
   </head>
   <body>
@@ -290,7 +315,10 @@ class: center, middle
 ]
 
 .right-column[
+  <img src="refs/rabbit-ears.jpeg" style="height: 500px" />
 ]
+
+<!-- https://en.wikipedia.org/wiki/Terrestrial_television -->
 
 ---
 
@@ -300,6 +328,12 @@ class: center, middle
   ### Radio Waves
   ### Composite Video
 ]
+
+.right-column[
+  <img src="refs/composite-cable.jpeg" style="width: 100%" />
+]
+
+<!-- https://en.wikipedia.org/wiki/Composite_video -->
 
 ---
 
@@ -310,6 +344,12 @@ class: center, middle
   ### Composite Video
   ### Component Video
 ]
+
+.right-column[
+  <img src="refs/component-cable.jpeg" style="width: 100%" />
+]
+
+<!-- https://en.wikipedia.org/wiki/Component_video -->
 
 ---
 
@@ -321,6 +361,12 @@ class: center, middle
   ### Component Video
   ### VGA
 ]
+
+.right-column[
+  <img src="refs/vga-cable.jpeg" style="width: 100%" />
+]
+
+<!-- https://en.wikipedia.org/wiki/Video_Graphics_Array -->
 
 ---
 
@@ -334,22 +380,60 @@ class: center, middle
   ### HDMI
 ]
 
+.right-column[
+  <img src="refs/hdmi-cable.jpeg" style="width: 100%" />
+]
+
+<!-- https://en.wikipedia.org/wiki/HDMI -->
+
 ---
 
 # GIFs
+
+.left-column[
+  <img src="refs/rotating-earth.gif" style="width: 100%" />
+]
+
+.right-column[
+* Uses palettes for pixels
+  * 256 defined color per "image"
+  * 8 bits per pixel
+
+* Gzipped compressed bitstream
+
+* Allows for an infinite number of frames
+
+* Can start displaying before all frames have been downloaded
+]
+
+<!-- https://en.wikipedia.org/wiki/GIF -->
 
 ---
 
 # Video Codecs
 
-* H262
-* H264 - AVC
-* H265 - HEVC
-* AV1
-* VP8 / VP9
+* H262 (MPEG-2)
+  * 1996
+
+* H264 (AVC)  
+  * 2004
+
+* VP8        
+  * 2008
+
+* H265 (HEVC)
+  * 2013
+
+* VP9
+  * 2013
+
+* AV1 
+  * 2018
 
 
 ---
+
+class: center, middle
 
 # Single Frame Compression
 
@@ -358,102 +442,210 @@ class: center, middle
 # Single-Frame Compression
 
 .left-column[
-  ### Macroblocks
+  ### Chroma Subsampling
 ]
+
+.right-column[
+<img src="refs/chroma-subsampling.svg" style="width: 100%" />
+]
+
+<!-- https://en.wikipedia.org/wiki/Chroma_subsampling -->
 
 ---
 
 # Single-Frame Compression
 
 .left-column[
+  ### Chroma Subsampling
+]
+
+.right-column[
+<img src="refs/Colorcomp.jpeg" style="width: 100%" />
+]
+
+<!-- https://en.wikipedia.org/wiki/Chroma_subsampling -->
+
+---
+
+# Single-Frame Compression
+
+.left-column[
+  ### Chroma Subsampling
+  ### Macroblocks
+]
+
+.right-column[
+<img src="refs/macroblocks.png" style="width: 100%" />
+]
+
+<!-- https://shopdelta.eu/h-265-video-coding-standard_l2_aid860.html -->
+
+---
+
+# Single-Frame Compression
+
+.left-column[
+  ### Chroma Subsampling
   ### Macroblocks
   ### Spatial Redundancy
 ]
 
+.right-column[
+<div class="grid-conversion">
+<table>
+  <tr><td>240</td><td>242</td><td>243</td><td>243</td></tr>
+  <tr><td>240</td><td>241</td><td>243</td><td>243</td></tr>
+  <tr><td>240</td><td>242</td><td>243</td><td>243</td></tr>
+  <tr><td>240</td><td>241</td><td>243</td><td>243</td></tr>
+</table>
+
+<div class="arrow">→</div>
+
+<table>
+  <tr><td>0</td><td>1</td><td>3</td><td>3</td></tr>
+  <tr><td>0</td><td>2</td><td>3</td><td>3</td></tr>
+  <tr><td>0</td><td>1</td><td>3</td><td>3</td></tr>
+  <tr><td>0</td><td>2</td><td>3</td><td>3</td></tr>
+</table>
+</div>
+]
+
 ---
 
 # Single-Frame Compression
 
 .left-column[
+  ### Chroma Subsampling
   ### Macroblocks
   ### Spatial Redundancy
   ### Frequency Of Detail
 ]
 
+.right-column[
+<img src="refs/detail-discarding.jpg" style="width: 80%" />
+]
+
+<!-- https://sidbala.com/h-264-is-magic/ -->
+
 ---
 
 # Single-Frame Compression
 
 .left-column[
+  ### Chroma Subsampling
   ### Macroblocks
   ### Spatial Redundancy
   ### Frequency Of Detail
   ### Quantization
 ]
 
----
+.right-column[
+<div class="grid-conversion">
+<table>
+  <tr><td>240</td><td>123</td><td>42</td><td>4</td></tr>
+  <tr><td>239</td><td>51</td><td>12</td><td>3</td></tr>
+  <tr><td>81</td><td>13</td><td>3</td><td>0</td></tr>
+  <tr><td>46</td><td>1</td><td>1</td><td>0</td></tr>
+</table>
 
-# Frame Types
+<div class="arrow">→</div>
 
-.left-column[
-  ### I-Frames
+<table>
+  <tr><td>60</td><td>30</td><td>10</td><td>1</td></tr>
+  <tr><td>59</td><td>12</td><td>3</td><td>0</td></tr>
+  <tr><td>20</td><td>3</td><td>0</td><td>0</td></tr>
+  <tr><td>11</td><td>0</td><td>0</td><td>0</td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="grid-conversion">
+<table>
+  <tr><td>60</td><td>30</td><td>10</td><td>1</td></tr>
+  <tr><td>59</td><td>12</td><td>3</td><td>0</td></tr>
+  <tr><td>20</td><td>3</td><td>0</td><td>0</td></tr>
+  <tr><td>11</td><td>0</td><td>0</td><td>0</td></tr>
+</table>
+
+<div class="arrow">→</div>
+
+<table>
+  <tr><td>240</td><td>120</td><td>40</td><td>4</td></tr>
+  <tr><td>236</td><td>48</td><td>12</td><td>0</td></tr>
+  <tr><td>81</td><td>12</td><td>0</td><td>0</td></tr>
+  <tr><td>44</td><td>0</td><td>0</td><td>0</td></tr>
+</table>
+</div>
 ]
 
 ---
 
 # Frame Types
 
-.left-column[
-  ### I-Frames
-  ### P-Frames
-]
+<img src="refs/frame_types.svg" />
 
----
+* I-Frames
+  * Intra-coded picture 
+  * Also known as Key Frames
+  * Contain a complete picture
+  * Largest size frame type
 
-# Frame Types
+* P-Frames
+  * Predicted picture 
+  * Contains only changes from the previous frame
 
-.left-column[
-  ### I-Frames
-  ### P-Frames
-  ### B-Frames
-]
+* B-Frames
+  * Bidirectional predicted picture 
+  * Only differences between the current and a number of other frames
 
 ---
 
 # Multi-Frame Compression
 
+<img src="refs/motion_vectors.png" />
+
+<!-- https://trac.ffmpeg.org/wiki/Debug/MacroblocksAndMotionVectors -->
+
 ---
 
 # Codecs Aren't Enough
 
----
-
-# Container Formats
-
-.left-column[
-  ### MP4
-]
+* Codecs don't contain
+  * Decoding or presentation timings
+  * Codec Identification
+  * Frame Locations
 
 ---
 
 # Container Formats
 
-.left-column[
-  ### MP4
-  ### TS
-]
+* MP4
+
+* TS
+
+* FLV
+
+* RTP
 
 ---
 
-# Container Formats
+# Live Streaming
 
 .left-column[
-  ### MP4
-  ### TS
-  ### FLV
+### RTMP
 ]
 
+.right-column[
+* Created by Adobe
 
+* Specification released 2012
+
+* Low latency when a good connection is present
+
+* TCP based protocol based on FLV container
+  * Connection hiccups can cause backlogs
+]
 
 
     </textarea>
