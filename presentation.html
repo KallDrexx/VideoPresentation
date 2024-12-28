@@ -410,25 +410,10 @@ class: center, middle
 
 ---
 
+class: center, middle
 # Video Codecs
 
-* H262 (MPEG-2)
-  * 1996
-
-* H264 (AVC)  
-  * 2004
-
-* VP8        
-  * 2008
-
-* H265 (HEVC)
-  * 2013
-
-* VP9
-  * 2013
-
-* AV1 
-  * 2018
+Specialized algorithms for decoding video
 
 
 ---
@@ -609,6 +594,56 @@ class: center, middle
 
 ---
 
+# Bitrates
+
+<video src="refs/bitrate-1.mp4" autoplay loop style="width: 100%" />
+
+---
+
+# Bitrates
+
+<video src="refs/bitrate-2.mp4" autoplay loop style="width: 100%" />
+
+---
+
+# Bitrates
+
+<video src="refs/bitrate-3.mp4" autoplay loop style="width: 100%" />
+
+---
+
+# These Calculations Are Expensive!
+
+* Latency to encode is situation dependent
+
+* Live video has no knowledge of future frames
+
+* More time = better quality = more computation = more cost
+
+---
+
+# Main Video Codecs
+
+* H262 (MPEG-2)
+  * 1996
+
+* H264 (AVC)  
+  * 2004
+
+* VP8        
+  * 2008
+
+* H265 (HEVC)
+  * 2013
+
+* VP9
+  * 2013
+
+* AV1 
+  * 2018
+
+---
+
 # Codecs Aren't Enough
 
 * Codecs don't contain
@@ -641,11 +676,62 @@ class: center, middle
 
 * Specification released 2012
 
-* Low latency when a good connection is present
-
 * TCP based protocol based on FLV container
   * Connection hiccups can cause backlogs
+  * Head-of-line blocking
 ]
+
+---
+
+# Live Streaming
+
+.left-column[
+### RTMP
+### SRT
+]
+
+.right-column[
+* Secure Reliable Transport
+
+* Created by Halvision in 2012 but released in 2017
+
+* One way UDP based protocol
+
+* Faster lost packet recovery
+
+* Can compensate for fluctuating bandwidth latency
+
+* Use of UDP requires firewall configuration
+]
+
+---
+
+# Live Streaming
+
+.left-column[
+### RTMP
+### SRT
+### WebRTC
+]
+
+.right-column[
+* Spec stabilized in 2018
+
+* Two way UDP based protocol for media and normal data.
+
+* Complex mechanisms for firewall hole punching (ICE, STUN).
+
+* Supported by all modern browsers for low latency applications.
+]
+
+---
+
+class: center, middle
+
+Thank You!
+
+
+
 
 
     </textarea>
