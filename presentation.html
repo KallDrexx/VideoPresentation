@@ -148,6 +148,8 @@ class: center, middle
 
 # All About Video
 
+<img src="refs/qr-code.png" style="width: 300px" />
+
 ---
 
 # Video As An Automated Flipbook
@@ -521,6 +523,26 @@ class: center, middle
   ### Macroblocks
   ### Spatial Redundancy
   ### Frequency Of Detail
+  ### Discrete Cosine Transform
+]
+
+.right-column[
+<img src="refs/hqdefault.jpg" style="width: 100%" />
+]
+
+<!-- https://sidbala.com/h-264-is-magic/ -->
+
+
+---
+
+# Single-Frame Compression
+
+.left-column[
+  ### Chroma Subsampling
+  ### Macroblocks
+  ### Spatial Redundancy
+  ### Frequency Of Detail
+  ### Discrete Cosine Transform
   ### Quantization
 ]
 
@@ -648,20 +670,130 @@ class: center, middle
 
 * Codecs don't contain
   * Decoding or presentation timings
+  
   * Codec Identification
+
   * Frame Locations
+
+  * Multiple Resolutions and Bitrates
+
 
 ---
 
 # Container Formats
 
-* MP4
+.left-column[
+### TS Segments
+]
 
-* TS
+.right-column[
+<img src="refs/ts-files.webp" style="width: 100%" />
+]
 
-* FLV
+<!-- https://medium.com/@amitdogra70512/mpeg-2-understanding-the-transport-stream-structure-dcf95b2b550b -->
 
-* RTP
+---
+
+# Container Formats
+
+.left-column[
+### TS Segments
+### MP4
+]
+
+.right-column[
+<img src="refs/mp4.webp" style="width: 100%" />
+]
+
+<!-- https://atscaleconference.com/virtual-video-files-at-scale-seamlessly-processing-billions-of-videos-per-day/ -->
+---
+
+# Container Formats
+
+.left-column[
+### TS Segments
+### MP4
+### FLV Segments
+]
+
+.right-column[
+<img src="refs/flv-format.png" style="width: 100%" />
+]
+
+<!-- https://www.semanticscholar.org/paper/A-NOVEL-FLV-STEGANOGRAPHY-APPROACH-USING-SECRET-AND-Obeidat-Bawaneh/5df20f59e5be9ba870734686654c74736940f94a -->
+
+---
+
+# HLS
+
+<img src="refs/stream_playlists_2x.png" style="width: 80%" />
+
+---
+
+# HLS
+## Master Playlist
+
+```
+#EXTM3U
+#EXT-X-STREAM-INF:BANDWIDTH=150000,RESOLUTION=416x234,CODECS="avc1.42e00a,mp4a.40.2"
+http://example.com/low/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=240000,RESOLUTION=416x234,CODECS="avc1.42e00a,mp4a.40.2"
+http://example.com/lo_mid/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=440000,RESOLUTION=416x234,CODECS="avc1.42e00a,mp4a.40.2"
+http://example.com/hi_mid/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=640000,RESOLUTION=640x360,CODECS="avc1.42e00a,mp4a.40.2"
+http://example.com/high/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=64000,CODECS="mp4a.40.5"
+http://example.com/audio/index.m3u8
+```
+
+---
+
+# HLS
+## Basic Playlist
+
+```
+#EXTM3U
+#EXT-X-PLAYLIST-TYPE:VOD
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-PROGRAM-DATE-TIME:2024-03-31T06:53:56.994Z
+#EXTINF:10.0,
+http://example.com/movie1/fileSequenceA.ts
+#EXT-X-PROGRAM-DATE-TIME:2024-03-31T07:03:56.994Z
+#EXTINF:10.0,
+http://example.com/movie1/fileSequenceB.ts
+#EXT-X-PROGRAM-DATE-TIME:2024-03-31T07:13:56.994Z
+#EXTINF:10.0,
+http://example.com/movie1/fileSequenceC.ts
+#EXT-X-PROGRAM-DATE-TIME:2024-03-31T07:23:56.994Z
+#EXTINF:9.0,
+http://example.com/movie1/fileSequenceD.ts
+#EXT-X-ENDLIST
+```
+
+---
+
+# HLS
+## Byte Range Playlist
+
+```
+#EXTM3U
+#EXT-X-VERSION:4
+#EXT-X-TARGETDURATION:6
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:5.338667,
+#EXT-X-BYTERANGE:535424@0
+video.ts
+#EXTINF:5.338667,
+#EXT-X-BYTERANGE:316592@535424
+video.ts
+#EXTINF:5.338667,
+#EXT-X-BYTERANGE:285384@852016
+video.ts
+#EXT-X-ENDLIST
+```
 
 ---
 
